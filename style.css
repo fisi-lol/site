@@ -1,0 +1,82 @@
+:root {
+  --bg: #0d1117;
+  --fg: #e6edf3;
+  --dim: #9da7b3;
+  --accent: #3fb950;
+  --hash: #e3b341;
+  --rule: #30363d;
+  --focus: #79c0ff;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fbfbf8;
+    --fg: #1f2328;
+    --dim: #57606a;
+    --accent: #116329;
+    --hash: #7d4e00;
+    --rule: #d0d7de;
+    --focus: #0550ae;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  background: var(--bg);
+  color: var(--fg);
+  font: 1rem/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0 auto;
+  padding: clamp(1.25rem, 5vw, 4rem) clamp(1rem, 5vw, 2rem);
+  max-width: 72ch;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1; }
+code { font: inherit; }
+h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 7vw, 3rem);
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--accent);
+}
+h2 {
+  margin: 2.5rem 0 .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--dim);
+}
+p { margin: 0 0 .75rem; }
+.prompt { color: var(--dim); }
+p.prompt { margin: 0 0 .5rem; }
+.tagline { font-size: clamp(1.05rem, 3.5vw, 1.35rem); }
+.tagline b { color: var(--accent); }
+.tagline em { font-style: normal; text-decoration: underline wavy var(--rule); text-underline-offset: .25em; }
+.sub { color: var(--dim); }
+.sub strong { color: var(--fg); }
+.log {
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+}
+.log li { display: flex; gap: 1ch; }
+.log li::before, .hash { flex: none; }
+.log li::before { content: "*"; color: var(--accent); }
+.hash { color: var(--hash); }
+footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--rule);
+  color: var(--dim);
+  font-size: .875rem;
+}
+.cursor { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+a { color: var(--focus); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+::selection { background: var(--accent); color: var(--bg); }
